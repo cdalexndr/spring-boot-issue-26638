@@ -20,7 +20,8 @@ public class PersonController {
     @Autowired
     HikariDataSource hikariDataSource;
 
-    @GetMapping("/assert")
+    @PostMapping("/assert")
+    @ResponseStatus(value = HttpStatus.OK)
     public void getAssert() {
         personService.get("asd"); //transactional = acquire connection
         //should release here, but no...

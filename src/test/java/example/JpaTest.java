@@ -36,7 +36,7 @@ public class JpaTest extends AbstractTestNGSpringContextTests {
 
     @Test
     public void testAssert() throws Exception {
-        mockMvc.perform(get("/assert")).andExpect(status().isOk());
+        mockMvc.perform(post("/assert")).andExpect(status().isOk());
     }
 
     @Test
