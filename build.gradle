@@ -13,33 +13,17 @@ tasks.named('wrapper') {
 }
 
 dependencies {
-    implementation group: 'org.testng', name: 'testng', version: '7.0.0'
     runtimeOnly 'com.h2database:h2'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
     implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
-    implementation group: 'org.springframework.boot', name: 'spring-boot-devtools'
-    implementation 'org.springframework:spring-aspects'
-    implementation "org.ehcache:ehcache:3.8.1"
-    implementation "org.hibernate:hibernate-jcache"
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation group: 'org.testng', name: 'testng', version: '7.3.0'
 }
 
 test {
-    useTestNG() {
-        useDefaultListeners = false
-        testName "UnitTest"
-        suiteName "UnitTestSuite"
-    }
+    useTestNG() {}
 }
-
-
-task cleanData(type: Delete) {
-    delete 'data', 'cache'
-}
-
-clean.dependsOn cleanData
 
 bootRun {
     main = 'example.Application'
